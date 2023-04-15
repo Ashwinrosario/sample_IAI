@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
+<!-- <script src="./node_modules/bootstrap/dist/js/"></script>
+<script src="./node_modules/bootstrap/dist/css/"></script> -->
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script>
+    function post(){
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phonenumber = document.getElementById('phonenumber').value;
+        var flag = document.getElementById('flag').value;
+        var flagname = document.getElementById('flagname').value;
+        var position = document.getElementById('position').value;
+        var password = document.getElementById('password').value;
+        var pass2 = document.getElementById('confpassword').value;
+        
+        if(password==pass2){
+            const senddata = async()=>{const res = await axios.post('http://localhost:6080/register',{
+                name:name,
+                email:email,
+                phonenumber:phonenumber,
+                flag:flag,
+                flagname:flagname,
+                position:position,
+                password:password
+            });
+        } 
+        senddata();
+        window.location.href = "login.html";
+        }
+        else{
+            alert ('password doesnt match');
+
+        }
+    }
+</script>
+<body>
+    <div class="container" >
+        <input type="text" id="name">
+        <label for="name">name</label>
+        <br>
+        <input type="text" id="email">
+        <label for="">email</label>
+        <br>
+        <input type="text" id="phonenumber">
+        <label for="">phonenumber</label>
+        <br>
+        <input type="text" id="flag">
+        <label for="">academy or industry</label>
+        <br>
+        <input type="text" id="flagname">
+        <label for="">flagname</label>
+        <br>
+        <input type="text" id="position">
+        <label for="">position</label>
+        <br>
+        <input type="text" id="password">
+        <label for="">password</label>
+        <br>
+        <input type="text" id="confpassword">
+        <label for="">confirm password</label>
+        <br>
+        <button onclick="post()">register</button>
+    </div>
+</body>
+</html>
