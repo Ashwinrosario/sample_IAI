@@ -22,7 +22,8 @@ router.post('/register', async(req, res)=>{
         const olduser =await user.findOne({email});
         if(olduser){
             res.json({
-                error:"user already exist"
+                status:200,
+                message:"user already exist"
             })
         }
         else{
@@ -38,7 +39,7 @@ router.post('/register', async(req, res)=>{
             const result = data.save();
             if(result){
                 res.json({
-                    status:"sucess",
+                    status:"success",
                     message:"inserted succesfully"
                 })
                 var transporter = nodemailer.createTransport({
@@ -66,7 +67,7 @@ router.post('/register', async(req, res)=>{
             }
             else{
                 res.json({
-                    status:"failure",
+                    status:"success",
                     message:"error occured in insertion"
                 })
             }
@@ -88,7 +89,8 @@ router.post('/login',async(req, res)=>{
     const olduser = await user.findOne({email});
     if(!olduser){
         res.send({
-            error:"user not registered"
+            status:"error",
+            message:"user not registered"
         })
     }
     else{
@@ -143,7 +145,7 @@ router.post('/redirecthome', async(req, res)=>{
 })
 
 router.post('/forgetpassword', async(req, res)=>{
-    console.log('hi from the forget')
+    // console.log('hi from the forget')
     const {email} = req.body;
     console.log(email)
     try {
@@ -154,7 +156,7 @@ router.post('/forgetpassword', async(req, res)=>{
                 error:"user not registered to update pssword"
             })
         }
-        const secret =  JWT_SECRET + olduser.password;
+        // const secret =  JWT_SECRET + olduser.password;
         const token = jwt.sign({email:olduser.email, id:olduser._id}, JWT_SECRET);
         const link = `http://localhost:6080/resetpassword/${olduser._id}/${token}`;
         console.log(link);
@@ -172,7 +174,7 @@ router.get('/resetpassword/:id/:token', async(req, res)=>{
     const olduser =  await user.findOne({_id: id});
     if(!olduser){
         return res.json({
-            status:"cannot update forget for peron who are not yet registered"
+            status:"cannot update forget for person who are not yet registered"
         })
     }
     const secret = JWT_SECRET + olduser.password;
@@ -181,7 +183,7 @@ router.get('/resetpassword/:id/:token', async(req, res)=>{
         const just = jwt.verify(secret, token);
         console.log('from verify',just)
         console.log(' verified')
-        res.render('forget', {email:check.email})
+        res.render('forget', {email:just.email})
     } catch (error) {
         console.log('eroor occcured in token verification' ,error)
         res.send('not verified')

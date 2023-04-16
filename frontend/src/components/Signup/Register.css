@@ -1,0 +1,79 @@
+.register{
+    overflow: hidden;
+    overflow-y: hidden;
+}
+.signup_left--main{
+    background-color: #A4BCC4;
+    color: white;
+}
+
+.signup_left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100vh;
+    text-align: center;
+}
+
+.signup_left--main h1{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 45px;
+    line-height: 48.41px;
+}
+
+.signup_left p{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.signup_left img{
+    max-width: 20rem;
+    margin-top: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup_right--main{
+    background-color: #E5E5E5;
+}
+
+.signup_right--main h1{
+    font-size: 38px;
+    line-height: 48.41px;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.signup_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100vh;
+    text-align: center;
+    max-width: 100%;
+}
+
+.input_box{
+    margin-bottom: 2rem;
+}
+
+.input_box input{
+    width: 20rem;
+    height: 2rem;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: #E5E5E5;
+}
+
+.input_box input::placeholder {
+  color: gray;
+  font-style: italic;
+}
