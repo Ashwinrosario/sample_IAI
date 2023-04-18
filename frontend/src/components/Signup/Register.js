@@ -10,7 +10,7 @@ const Register = () => {
           <h1>LOGO</h1>
           <div className="signup_left">
             <p>SIGN UP HERE</p>
-            <img src={image} />
+            <img src={image} alt="register_image"/>
           </div>
         </div>
         <div className="col-md-6 col-12 signup_right--main">
